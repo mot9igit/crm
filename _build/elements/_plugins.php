@@ -1,8 +1,8 @@
 <?php
 
 return [
-    'modExtra' => [
-        'file' => 'modextra',
+    'crm' => [
+        'file' => 'crm',
         'description' => '',
         'events' => [
             'OnManagerPageInit' => [],

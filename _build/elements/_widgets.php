@@ -1,12 +1,12 @@
 <?php
 
 return [
-    'modExtra' => [
+    'crm' => [
         'description' => '',
         'type' => 'file',
         'content' => '',
-        'namespace' => 'modextra',
-        'lexicon' => 'modextra:dashboards',
+        'namespace' => 'crm',
+        'lexicon' => 'crm:dashboards',
         'size' => 'half',
     ],
 ];

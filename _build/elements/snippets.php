@@ -1,13 +1,13 @@
 <?php
 
 return [
-    'modExtra' => [
-        'file' => 'modextra',
-        'description' => 'modExtra snippet to list items',
+    'crm' => [
+        'file' => 'crm',
+        'description' => 'crm snippet to list items',
         'properties' => [
             'tpl' => [
                 'type' => 'textfield',
-                'value' => 'tpl.modExtra.item',
+                'value' => 'tpl.crm.item',
             ],
             'sortby' => [
                 'type' => 'textfield',
