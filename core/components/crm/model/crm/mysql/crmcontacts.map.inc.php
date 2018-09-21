@@ -125,22 +125,6 @@ $xpdo_meta_map['crmContacts']= array (
         ),
       ),
     ),
-    'status' => 
-    array (
-      'alias' => 'status',
-      'primary' => false,
-      'unique' => false,
-      'type' => 'BTREE',
-      'columns' => 
-      array (
-        'status' => 
-        array (
-          'length' => '',
-          'collation' => 'A',
-          'null' => false,
-        ),
-      ),
-    ),
     'source' => 
     array (
       'alias' => 'source',
@@ -150,6 +134,22 @@ $xpdo_meta_map['crmContacts']= array (
       'columns' => 
       array (
         'source' => 
+        array (
+          'length' => '',
+          'collation' => 'A',
+          'null' => false,
+        ),
+      ),
+    ),
+    'type' => 
+    array (
+      'alias' => 'type',
+      'primary' => false,
+      'unique' => false,
+      'type' => 'BTREE',
+      'columns' => 
+      array (
+        'type' => 
         array (
           'length' => '',
           'collation' => 'A',

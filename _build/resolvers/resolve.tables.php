@@ -6,14 +6,16 @@ if ($object->xpdo) {
 
 	switch ($options[xPDOTransport::PACKAGE_ACTION]) {
 		case xPDOTransport::ACTION_INSTALL:
-			$modelPath = $modx->getOption('sendex_core_path',null,$modx->getOption('core_path').'components/sendex/').'model/';
-			$modx->addPackage('sendex', $modelPath);
+			$modelPath = $modx->getOption('crm_core_path',null,$modx->getOption('core_path').'components/crm/').'model/';
+			$modx->addPackage('crm', $modelPath);
 
 			$manager = $modx->getManager();
 			$objects = array(
-				'sxNewsletter',
-				'sxSubscriber',
-				'sxQueue',
+				'crmGroup',
+				'crmGroupSub',
+				'crmContacts',
+				'crmContactType',
+				'crmContactSource'
 			);
 			foreach ($objects as $object) {
 				$manager->createObjectContainer($object);

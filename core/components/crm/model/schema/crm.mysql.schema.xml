@@ -52,11 +52,11 @@
         <index alias="name" name="name" primary="false" unique="false" type="BTREE">
             <column key="name" length="" collation="A" null="false"/>
         </index>
-        <index alias="status" name="status" primary="false" unique="false" type="BTREE">
-            <column key="status" length="" collation="A" null="false"/>
-        </index>
         <index alias="source" name="source" primary="false" unique="false" type="BTREE">
             <column key="source" length="" collation="A" null="false"/>
+        </index>
+        <index alias="type" name="type" primary="false" unique="false" type="BTREE">
+            <column key="type" length="" collation="A" null="false"/>
         </index>
         <index alias="group" name="group" primary="false" unique="false" type="BTREE">
             <column key="group" length="" collation="A" null="false"/>
