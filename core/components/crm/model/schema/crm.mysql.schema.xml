@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<model package="crm" baseClass="xPDOObject" platform="mysql" defaultEngine="InnoDB" phpdoc-package="crm"
+<model package="crm" baseClass="xPDOObject" platform="mysql" defaultEngine="MyISAM" phpdoc-package="crm"
        version="1.1">
 
-    <object class="crmItem" table="crm_items" extends="xPDOSimpleObject">
+    <object class="crmGroup" table="crm_group" extends="xPDOSimpleObject">
         <field key="name" dbtype="varchar" precision="100" phptype="string" null="false" default=""/>
         <field key="description" dbtype="text" phptype="string" null="true" default=""/>
         <field key="active" dbtype="tinyint" precision="1" phptype="boolean" null="true" default="1"/>
+        <field key="properties" dbtype="text" phptype="json" null="true"/>
 
         <index alias="name" name="name" primary="false" unique="false" type="BTREE">
             <column key="name" length="" collation="A" null="false"/>
@@ -13,6 +14,86 @@
         <index alias="active" name="active" primary="false" unique="false" type="BTREE">
             <column key="active" length="" collation="A" null="false"/>
         </index>
+
+        <composite alias="Subgroup" class="crmGroupSub" local="id" foreign="group" cardinality="many" owner="local"/>
+        <composite alias="Contacts" class="crmContacts" local="id" foreign="group" cardinality="many" owner="local"/>
     </object>
+
+    <object class="crmGroupSub" table="crm_group_sub" extends="xPDOSimpleObject">
+        <field key="name" dbtype="varchar" precision="100" phptype="string" null="false" default=""/>
+        <field key="description" dbtype="text" phptype="string" null="true" default=""/>
+        <field key="active" dbtype="tinyint" precision="1" phptype="boolean" null="true" default="1"/>
+        <field key="group" dbtype="int" precision="10" attributes="unsigned" phptype="integer" null="true" default="0"/>
+        <field key="properties" dbtype="text" phptype="json" null="true"/>
+
+        <index alias="name" name="name" primary="false" unique="false" type="BTREE">
+            <column key="name" length="" collation="A" null="false"/>
+        </index>
+        <index alias="active" name="active" primary="false" unique="false" type="BTREE">
+            <column key="active" length="" collation="A" null="false"/>
+        </index>
+
+        <aggregate alias="Group" class="crmGroup" local="group" foreign="id" cardinality="one" owner="foreign"/>
+    </object>
+
+    <object class="crmContacts" table="crm_contacts" extends="xPDOSimpleObject">
+        <field key="name" dbtype="varchar" precision="100" phptype="string" null="false" default=""/>
+        <field key="regalies" dbtype="text" phptype="string" null="true" default=""/>
+        <field key="birthday" dbtype="datetime" phptype="datetime" null="true" />
+        <field key="phone" dbtype="text" phptype="json" null="true"/>
+        <field key="messenger" dbtype="text" phptype="json" null="true"/>
+        <field key="sites" dbtype="text" phptype="json" null="true"/>
+        <field key="type" dbtype="int" precision="10" attributes="unsigned" phptype="integer" null="true" default="0"/>
+        <field key="source" dbtype="int" precision="10" attributes="unsigned" phptype="integer" null="true" default="0"/>
+        <field key="comment" dbtype="text" phptype="string" null="true" default=""/>
+        <field key="group" dbtype="int" precision="10" attributes="unsigned" phptype="integer" null="true" default="0"/>
+        <field key="subgroup" dbtype="int" precision="10" attributes="unsigned" phptype="integer" null="true" default="0"/>
+
+        <index alias="name" name="name" primary="false" unique="false" type="BTREE">
+            <column key="name" length="" collation="A" null="false"/>
+        </index>
+        <index alias="status" name="status" primary="false" unique="false" type="BTREE">
+            <column key="status" length="" collation="A" null="false"/>
+        </index>
+        <index alias="source" name="source" primary="false" unique="false" type="BTREE">
+            <column key="source" length="" collation="A" null="false"/>
+        </index>
+        <index alias="group" name="group" primary="false" unique="false" type="BTREE">
+            <column key="group" length="" collation="A" null="false"/>
+        </index>
+        <index alias="subgroup" name="subgroup" primary="false" unique="false" type="BTREE">
+            <column key="subgroup" length="" collation="A" null="false"/>
+        </index>
+
+        <aggregate alias="Status" class="crmContactType" local="status" foreign="id" cardinality="one" owner="foreign"/>
+        <aggregate alias="Source" class="crmContactSource" local="source" foreign="id" cardinality="one" owner="foreign"/>
+        <aggregate alias="Group" class="crmGroup" local="group" foreign="id" cardinality="one" owner="foreign"/>
+        <aggregate alias="Subgroup" class="crmGroupSub" local="subgroup" foreign="id" cardinality="one" owner="foreign"/>
+    </object>
+
+    <object class="crmContactType" table="crm_contacts_type" extends="xPDOSimpleObject">
+        <field key="name" dbtype="varchar" precision="100" phptype="string" null="false"/>
+        <field key="description" dbtype="text" phptype="string" null="true"/>
+        <field key="active" dbtype="tinyint" precision="1" phptype="integer" null="true" default="1"/>
+
+        <index alias="active" name="active" primary="false" unique="false" type="BTREE">
+            <column key="active" length="" collation="A" null="false"/>
+        </index>
+
+        <aggregate alias="Contacts" class="crmContacts" local="id" foreign="status" cardinality="many" owner="local"/>
+    </object>
+
+    <object class="crmContactSource" table="crm_contacts_source" extends="xPDOSimpleObject">
+        <field key="name" dbtype="varchar" precision="100" phptype="string" null="false"/>
+        <field key="description" dbtype="text" phptype="string" null="true"/>
+        <field key="active" dbtype="tinyint" precision="1" phptype="integer" null="true" default="1"/>
+
+        <index alias="active" name="active" primary="false" unique="false" type="BTREE">
+            <column key="active" length="" collation="A" null="false"/>
+        </index>
+
+        <aggregate alias="Contacts" class="crmContacts" local="id" foreign="source" cardinality="many" owner="local"/>
+    </object>
+
 
 </model>
