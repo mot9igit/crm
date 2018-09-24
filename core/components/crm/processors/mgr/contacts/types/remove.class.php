@@ -1,9 +1,9 @@
 <?php
 
-class crmContactsRemoveProcessor extends modObjectProcessor
+class crmContactsTypesRemoveProcessor extends modObjectProcessor
 {
-    public $objectType = 'crmContacts';
-    public $classKey = 'crmContacts';
+    public $objectType = 'crmContactType';
+    public $classKey = 'crmContactType';
     public $languageTopics = ['crm'];
     //public $permission = 'remove';
 

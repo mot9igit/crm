@@ -18,7 +18,7 @@ else {
 require_once MODX_CORE_PATH . 'config/' . MODX_CONFIG_KEY . '.inc.php';
 require_once MODX_CONNECTORS_PATH . 'index.php';
 $corePath = $modx->getOption('crm_core_path', null, $modx->getOption('core_path') . 'components/crm/');
-require_once $corePath . 'model/crm.class.php';
+require_once $corePath . 'model/crm/crm.class.php';
 $modx->crm = new crm($modx);
 $modx->lexicon->load('crm:default');
 /* handle request */

@@ -1,9 +1,9 @@
 <?php
 
-class crmItemGetProcessor extends modObjectGetProcessor
+class crmContactGetProcessor extends modObjectGetProcessor
 {
-    public $objectType = 'crmItem';
-    public $classKey = 'crmItem';
+    public $objectType = 'crmContacts';
+    public $classKey = 'crmContacts';
     public $languageTopics = ['crm:default'];
     //public $permission = 'view';
 
@@ -25,4 +25,4 @@ class crmItemGetProcessor extends modObjectGetProcessor
 
 }
 
-return 'crmItemGetProcessor';
+return 'crmContactGetProcessor';

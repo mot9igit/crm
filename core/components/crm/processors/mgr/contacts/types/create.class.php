@@ -1,9 +1,9 @@
 <?php
 
-class crmContactsCreateProcessor extends modObjectCreateProcessor
+class crmContactsTypesCreateProcessor extends modObjectCreateProcessor
 {
-    public $objectType = 'crmContacts';
-    public $classKey = 'crmContacts';
+    public $objectType = 'crmContactType';
+    public $classKey = 'crmContactType';
     public $languageTopics = ['crm'];
     //public $permission = 'create';
 
@@ -25,4 +25,4 @@ class crmContactsCreateProcessor extends modObjectCreateProcessor
 
 }
 
-return 'crmContactsCreateProcessor';
+return 'crmContactsTypesCreateProcessor';

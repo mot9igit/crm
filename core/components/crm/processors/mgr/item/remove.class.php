@@ -1,9 +1,9 @@
 <?php
 
-class crmItemRemoveProcessor extends modObjectProcessor
+class crmContactsRemoveProcessor extends modObjectProcessor
 {
-    public $objectType = 'crmItem';
-    public $classKey = 'crmItem';
+    public $objectType = 'crmContacts';
+    public $classKey = 'crmContacts';
     public $languageTopics = ['crm'];
     //public $permission = 'remove';
 
@@ -16,10 +16,17 @@ class crmItemRemoveProcessor extends modObjectProcessor
         if (!$this->checkPermissions()) {
             return $this->failure($this->modx->lexicon('access_denied'));
         }
-
+        $id = $this->getProperty('id');
         $ids = $this->modx->fromJSON($this->getProperty('ids'));
         if (empty($ids)) {
-            return $this->failure($this->modx->lexicon('crm_item_err_ns'));
+            if(!empty($id)) {
+                if (!$object = $this->modx->getObject($this->classKey, $id)) {
+                    return $this->failure($this->modx->lexicon('crm_item_err_nf'));
+                }
+                $object->remove();
+            }else{
+                return $this->failure($this->modx->lexicon('crm_item_err_ns'));
+            }
         }
 
         foreach ($ids as $id) {
@@ -36,4 +43,4 @@ class crmItemRemoveProcessor extends modObjectProcessor
 
 }
 
-return 'crmItemRemoveProcessor';
+return 'crmContactsRemoveProcessor';

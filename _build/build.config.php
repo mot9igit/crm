@@ -6,7 +6,7 @@ define('PKG_NAME_LOWER', strtolower(PKG_NAME));
 
 define('PKG_VERSION', '0.0.1');
 define('PKG_RELEASE', 'beta');
-define('PKG_AUTO_INSTALL', false);
+define('PKG_AUTO_INSTALL', true);
 
 /* define paths */
 if (isset($_SERVER['MODX_BASE_PATH'])) {

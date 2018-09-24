@@ -1,9 +1,15 @@
 <?php
+/**
+ * Created by PhpStorm.
+ * User: Артем
+ * Date: 23.09.2018
+ * Time: 13:14
+ */
 
-class crmContactsGetListProcessor extends modObjectGetListProcessor
+class crmContactsTypesGetListProcessor extends modObjectGetListProcessor
 {
-    public $objectType = 'crmContacts';
-    public $classKey = 'crmContacts';
+    public $objectType = 'crmContactType';
+    public $classKey = 'crmContactType';
     public $defaultSortField = 'id';
     public $defaultSortDirection = 'DESC';
     //public $permission = 'list';
@@ -58,9 +64,9 @@ class crmContactsGetListProcessor extends modObjectGetListProcessor
         $array['actions'][] = [
             'cls' => '',
             'icon' => 'icon icon-edit',
-            'title' => $this->modx->lexicon('crm_item_update'),
+            'title' => $this->modx->lexicon('crm_contacts_types_update'),
             //'multiple' => $this->modx->lexicon('crm_items_update'),
-            'action' => 'updateItem',
+            'action' => 'updateContactsTypes',
             'button' => true,
             'menu' => true,
         ];
@@ -69,9 +75,9 @@ class crmContactsGetListProcessor extends modObjectGetListProcessor
             $array['actions'][] = [
                 'cls' => '',
                 'icon' => 'icon icon-power-off action-green',
-                'title' => $this->modx->lexicon('crm_item_enable'),
-                'multiple' => $this->modx->lexicon('crm_items_enable'),
-                'action' => 'enableItem',
+                'title' => $this->modx->lexicon('crm_contacts_types_enable'),
+                'multiple' => $this->modx->lexicon('crm_contacts_types_enable'),
+                'action' => 'enableContactsTypes',
                 'button' => true,
                 'menu' => true,
             ];
@@ -79,9 +85,9 @@ class crmContactsGetListProcessor extends modObjectGetListProcessor
             $array['actions'][] = [
                 'cls' => '',
                 'icon' => 'icon icon-power-off action-gray',
-                'title' => $this->modx->lexicon('crm_item_disable'),
-                'multiple' => $this->modx->lexicon('crm_items_disable'),
-                'action' => 'disableItem',
+                'title' => $this->modx->lexicon('crm_contacts_types_disable'),
+                'multiple' => $this->modx->lexicon('crm_contacts_types_disable'),
+                'action' => 'disableContactsTypes',
                 'button' => true,
                 'menu' => true,
             ];
@@ -91,9 +97,9 @@ class crmContactsGetListProcessor extends modObjectGetListProcessor
         $array['actions'][] = [
             'cls' => '',
             'icon' => 'icon icon-trash-o action-red',
-            'title' => $this->modx->lexicon('crm_item_remove'),
-            'multiple' => $this->modx->lexicon('crm_items_remove'),
-            'action' => 'removeItem',
+            'title' => $this->modx->lexicon('crm_contacts_types_remove'),
+            'multiple' => $this->modx->lexicon('crm_contacts_types_remove'),
+            'action' => 'removeContactsTypes',
             'button' => true,
             'menu' => true,
         ];
@@ -103,4 +109,4 @@ class crmContactsGetListProcessor extends modObjectGetListProcessor
 
 }
 
-return 'crmContactsGetListProcessor';
+return 'crmContactsTypesGetListProcessor';

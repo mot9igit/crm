@@ -75,7 +75,7 @@
         <field key="name" dbtype="varchar" precision="100" phptype="string" null="false"/>
         <field key="description" dbtype="text" phptype="string" null="true"/>
         <field key="active" dbtype="tinyint" precision="1" phptype="integer" null="true" default="1"/>
-
+        <field key="rank" dbtype="tinyint" precision="1" attributes="unsigned" phptype="integer" null="true" default="0"/>
         <index alias="active" name="active" primary="false" unique="false" type="BTREE">
             <column key="active" length="" collation="A" null="false"/>
         </index>
@@ -87,7 +87,7 @@
         <field key="name" dbtype="varchar" precision="100" phptype="string" null="false"/>
         <field key="description" dbtype="text" phptype="string" null="true"/>
         <field key="active" dbtype="tinyint" precision="1" phptype="integer" null="true" default="1"/>
-
+        <field key="rank" dbtype="tinyint" precision="1" attributes="unsigned" phptype="integer" null="true" default="0"/>
         <index alias="active" name="active" primary="false" unique="false" type="BTREE">
             <column key="active" length="" collation="A" null="false"/>
         </index>
